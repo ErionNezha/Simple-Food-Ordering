@@ -1,5 +1,7 @@
 # 🍔 Porositje e Thjeshtë Ushqimi 🇦🇱
 
+Created by **Erion Nezha**
+
 > Sistem porositjeje ushqimi në console në C++ për **Erion's Fast Food** — shfleto menunë, zgjidh madhësinë dhe sasinë, dhe merr faturën.
 
 ![Pamje nga demo](screenshot.png)
@@ -34,6 +36,8 @@ Copyright © 2026 Erion Nezha. Të gjitha të drejtat e rezervuara. Shih [LICENS
 ---
 
 # 🍔 Simple Food Ordering 🇬🇧
+
+Created by **Erion Nezha**
 
 > A console food-ordering system in C++ for **Erion's Fast Food** — browse the menu, pick a size and quantity, and get your bill.
 
