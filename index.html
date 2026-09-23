@@ -1,177 +1,115 @@
-<!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="en">
+<!DOCTYPE html>
+<html lang="sq">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Food Ordering &mdash; C++ &mdash; Erion Nezha</title>
-<meta name="description" content="Simple Food Ordering System in C++ by Erion Nezha — browse the source code live.">
+<title>Simple Food Ordering — Erion Nezha</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#ffc857;--gold-dim:#b98a1e;--bg:#0a0a10;--card:#12121a;--line:#23232f;--txt:#e8e6df;--mut:#9a9789;--blue:#7ee0ff}
-body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh}
-.hero{text-align:center;padding:72px 20px 40px;background:radial-gradient(ellipse at 50% -50%,#2a2111 0%,transparent 60%)}
-.badge{display:inline-block;border:1px solid var(--gold-dim);color:var(--gold);border-radius:999px;padding:6px 18px;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:22px}
-.hero h1{font-size:clamp(30px,5.5vw,56px);letter-spacing:2px;background:linear-gradient(180deg,#ffe9b0,var(--gold) 60%,#8a6410);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
-.hero p{color:var(--mut);max-width:660px;margin:18px auto 0;line-height:1.7;font-size:16px}
-.stack{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
-.stack span{border:1px solid var(--line);background:var(--card);color:var(--blue);border-radius:8px;padding:6px 14px;font-size:13px;font-family:Consolas,monospace}
-.stats{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-.stat{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 26px}
-.stat b{color:var(--gold);font-size:24px;display:block}
-.stat span{color:var(--mut);font-size:12px;letter-spacing:1px;text-transform:uppercase}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px 60px}
-.codecard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.codecard header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px}
-.codecard header h3{color:var(--gold);font-size:18px}
-.codecard header h3 small{color:var(--mut);font-weight:400}
-.codebox{overflow:auto;padding:20px 22px;max-height:70vh}
-pre{font-family:'Cascadia Code',Consolas,monospace;font-size:13px;line-height:1.65;counter-reset:ln}
-pre .row{display:block;white-space:pre}
-pre .row::before{counter-increment:ln;content:counter(ln);display:inline-block;width:44px;color:#4a4a58;text-align:right;margin-right:16px;user-select:none}
-.k{color:#ff7edb}.s{color:#ffc857}.c{color:#6a6a78;font-style:italic}.n{color:#7ee0ff}.p{color:#8affc1}
-.codecard footer{display:flex;gap:10px;padding:16px 22px;border-top:1px solid var(--line)}
-.btn{flex:1;text-align:center;border-radius:10px;padding:10px;font-size:14px;cursor:pointer;text-decoration:none;transition:.2s;border:1px solid var(--gold-dim)}
-.btn.view{background:var(--gold);color:#111;font-weight:700;border-color:var(--gold)}
-.btn.view:hover{background:#ffd47a}
-.btn.gh{background:transparent;color:var(--gold)}
-.btn.gh:hover{background:rgba(255,200,87,.08)}
-.howto{max-width:960px;margin:0 auto 50px;padding:0 20px}
-.howto .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
-.howto h2{color:var(--gold);margin-bottom:14px;font-size:20px}
-.howto ol{margin-left:20px;color:var(--mut);line-height:2;font-size:15px}
-.howto code{background:#0a0a10;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--blue);font-family:Consolas,monospace;font-size:13px}
-footer.page{text-align:center;padding:34px 20px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
-footer.page a{color:var(--gold);text-decoration:none}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0e14;color:#e6e6e6;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+header.top{background:linear-gradient(135deg,#0d1b2a,#1b263b);padding:28px 20px;text-align:center;border-bottom:2px solid #00d4ff33}
+header.top h1{font-size:1.7rem;color:#fff;margin-bottom:8px}
+header.top p{color:#9fb3c8;max-width:760px;margin:0 auto 12px;line-height:1.55;font-size:.95rem}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badge{background:#00d4ff22;border:1px solid #00d4ff66;color:#7fdbff;padding:4px 12px;border-radius:20px;font-size:.78rem}
+.tabs{display:flex;gap:10px;justify-content:center;padding:16px;background:#0d1420;border-bottom:1px solid #ffffff14}
+.tabs button{background:#1b263b;color:#cfd8e3;border:1px solid #ffffff22;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:.92rem;transition:.2s}
+.tabs button.active,.tabs button:hover{background:#00d4ff;color:#04121a;border-color:#00d4ff;font-weight:600}
+main{flex:1;padding:20px;max-width:1200px;width:100%;margin:0 auto}
+.panel{display:none}
+.panel.active{display:block}
+iframe.demo{width:100%;height:78vh;border:1px solid #ffffff22;border-radius:10px;background:#fff}
+.codewrap{display:flex;gap:0;border:1px solid #ffffff22;border-radius:10px;overflow:hidden;height:78vh;background:#0d1117}
+.tree{width:250px;min-width:200px;background:#0d1420;border-right:1px solid #ffffff14;overflow-y:auto;padding:12px;font-size:.82rem}
+.tree .tfile{padding:5px 8px;border-radius:5px;cursor:pointer;color:#9fb3c8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree .tfile:hover{background:#ffffff10;color:#fff}
+.tree .tfile.active{background:#00d4ff26;color:#7fdbff}
+.tree .tdir{color:#5c6b7f;font-weight:600;margin-top:8px;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.codeview{flex:1;overflow:auto;padding:0;position:relative}
+.codeview pre{padding:16px;font-family:'Consolas','Fira Code',monospace;font-size:.82rem;line-height:1.6;color:#d6deeb;white-space:pre}
+.codeview .lineno{color:#4a5568;user-select:none;margin-right:12px;display:inline-block;width:32px;text-align:right}
+.codeview img.preview{max-width:100%;padding:20px}
+.cbar{display:flex;gap:8px;align-items:center;padding:10px 14px;background:#0d1420;border-bottom:1px solid #ffffff14;font-size:.82rem;color:#9fb3c8;overflow-x:auto}
+.ctab{padding:6px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;border:1px solid transparent}
+.ctab:hover{background:#ffffff10}
+.ctab.active{background:#00d4ff26;color:#7fdbff;border-color:#00d4ff55}
+footer{text-align:center;padding:18px;color:#5c6b7f;font-size:.85rem;border-top:1px solid #ffffff10;margin-top:10px}
+footer strong{color:#9fb3c8}
+.term{background:#05070a;border:1px solid #00ff8833;border-radius:10px;overflow:hidden;height:78vh;display:flex;flex-direction:column}
+.term-head{background:#0d1420;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #ffffff14}
+.dot{width:12px;height:12px;border-radius:50%}
+.term-title{color:#9fb3c8;font-size:.82rem;margin-left:6px;flex:1}
+.replay{background:#00ff8822;border:1px solid #00ff8866;color:#7dffb0;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:.8rem}
+.replay:hover{background:#00ff8844}
+#term-body{flex:1;overflow-y:auto;padding:16px;font-family:'Consolas',monospace;font-size:.88rem;line-height:1.7;color:#33ff88;white-space:pre-wrap;word-break:break-word}
+#term-body .inp{color:#ffd75c}
+#term-body .dim{color:#4a6b57}
+.cursor{display:inline-block;width:9px;height:17px;background:#33ff88;vertical-align:-3px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.split .term,.split .codewrap{height:78vh}
+@media(max-width:860px){.split{grid-template-columns:1fr}.codewrap{flex-direction:column}.tree{width:100%;max-height:150px;border-right:none;border-bottom:1px solid #ffffff14}}
+.kw{color:#ff7edb}.st{color:#ffd75c}.cm{color:#5c6b7f;font-style:italic}.fn{color:#7fdbff}.nm{color:#f78c6c}
+.note{background:#00d4ff12;border:1px solid #00d4ff44;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.86rem;color:#9fb3c8;line-height:1.6}
 </style>
 </head>
 <body>
-<div class="hero">
-<div class="badge">🍔 C++ &bull; Console App</div>
-<h1>SIMPLE FOOD ORDERING</h1>
-<p>A console ordering system for <b>Erion's Fast Food</b> — pick pizzas, burgers, sandwiches, rolls or biryani, choose a size and quantity, and get your bill printed. Full source below.</p>
-<div class="stack"><span>C++</span><span>iostream</span><span>conio</span></div>
-<div class="stats">
-<div class="stat"><b>345</b><span>Lines of code</span></div>
-<div class="stat"><b>5</b><span>Menu categories</span></div>
-<div class="stat"><b>100%</b><span>C++</span></div>
+<header class="top">
+<h1>🚀 Simple Food Ordering</h1>
+<p>🍔 Porositje e Thjeshtë Ushqimi 🇦🇱</p>
+<div class="badges"><span class="badge">HTML</span><span class="badge">JavaScript</span><span class="badge">C/C++</span><span class="badge">WebAssembly</span></div>
+</header>
+<div class="tabs">
+<button class="active" onclick="show('demo',this)">🖥️ Live Demo</button>
+<button onclick="show('code',this)">📝 Kodi Burim</button>
 </div>
-</div>
-<!-- Live terminal demo section (WASM) — included in the showcase page -->
-<section class="livedemo" id="live-demo">
-  <h2>▶ Live Demo — ekzekutohet vërtet në browser</h2>
-  <p class="livedemo-sub">Programi C++ është kompiluar në <b>WebAssembly</b> dhe ekzekutohet live këtu. Shkruaj në terminal si në console normale.</p>
-  <div class="term-wrap">
-    <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">Simple Food Ordering — terminal</span>
-      <button class="term-restart" onclick="location.reload()">⟳ Rifillo</button>
-    </div>
-    <div id="terminal"></div>
-  </div>
-  <p class="livedemo-note2">Kodi origjinal C++ nuk është ndryshuar — demo përdor një build WebAssembly të tij.</p>
-</section>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css">
-<script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+<main>
+<div class="note">💡 Demo-ja live ekzekutohet direkt në browser. Kliko <strong>Kodi Burim</strong> për të parë kodin e plotë të projektit.</div>
+<div id="p-demo" class="panel active"><iframe class="demo" src="demo/index.html" title="Live demo"></iframe></div>
+<div id="p-code" class="panel"><div class="codewrap">
+<aside class="tree" id="tree"></aside>
+<div class="codeview"><div class="cbar" id="cbar"></div><div id="codebox"><pre></pre></div></div>
+</div></div>
+</main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026</footer>
 <script>
-/* Module config must exist BEFORE sfo.js loads (classic Emscripten build) */
-var __termInputQueue = [];
-var __termWake = null;
-function __stdinRead() {
-  if (__termInputQueue.length) return __termInputQueue.shift();
-  Asyncify.handleSleep(function (wakeUp) { __termWake = wakeUp; });
-  return __termInputQueue.shift();
+const TREE={"dirs": [], "files": ["ORDERINGC.CPP", "index.html", "screenshot.png", "sfo.js", "sfo.wasm"]};
+const CODEDIR="demo";
+const IMG=/\.(png|jpe?g|gif|svg|webp|ico|bmp)$/i;
+function show(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('p-'+id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function buildTree(){
+  const t=document.getElementById('tree');let html='';
+  const walk=(node,prefix)=>{node.dirs.forEach(d=>{html+='<div class="tdir">📁 '+prefix+d.name+'</div>';walk(d,prefix+d.name+'/');});node.files.forEach(f=>{html+='<div class="tfile" data-p="'+prefix+f+'">📄 '+f+'</div>';});};
+  walk(TREE,'');t.innerHTML=html;
+  t.querySelectorAll('.tfile').forEach(el=>el.onclick=()=>openFile(el.dataset.p,el));
+  const first=t.querySelector('.tfile');if(first)openFile(first.dataset.p,first);
 }
-var Module = {
-  preRun: [function () { FS.init(__stdinRead, null, null); }],
-  print: function (t) { window.__term.write(t + '\r\n'); },
-  printErr: function (t) { window.__term.write(t + '\r\n'); },
-  onRuntimeInitialized: function () { window.__term.write('\r\n\x1b[32m● Programi u ngarkua — shkruaj më poshtë.\x1b[0m\r\n'); }
-};
-</script>
-<script src="sfo.js"></script>
-<script>
-(function () {
-  var term = new Terminal({ cursorBlink: true, fontSize: 14, fontFamily: 'Consolas, Menlo, monospace',
-    theme: { background: '#0a0a10', foreground: '#e8e6df', cursor: '#ffc857' } });
-  window.__term = term;
-  term.open(document.getElementById('terminal'));
-  term.write('\x1b[33mDuke ngarkuar programin…\x1b[0m\r\n');
-  var lineBuf = [];
-  term.onData(function (data) {
-    for (var i = 0; i < data.length; i++) {
-      var ch = data.charCodeAt(i);
-      if (ch === 13) { // Enter
-        term.write('\r\n');
-        lineBuf = [];
-        __termInputQueue.push(10);
-        if (__termWake) { var w = __termWake; __termWake = null; w(); }
-      } else if (ch === 127) { // Backspace
-        if (lineBuf.length) { lineBuf.pop(); __termInputQueue.pop(); term.write('\b \b'); }
-      } else if (ch >= 32) {
-        lineBuf.push(ch); __termInputQueue.push(ch); term.write(data[i]);
-      }
-    }
-    if (__termWake && __termInputQueue.length) { var w2 = __termWake; __termWake = null; w2(); }
-  });
-})();
-</script>
-<style>
-.livedemo{max-width:900px;margin:34px auto;padding:0 20px}
-.livedemo h2{color:var(--gold,#ffc857);letter-spacing:1px;margin-bottom:8px}
-.livedemo-sub{color:var(--mut,#9a9789);margin-bottom:16px;line-height:1.6}
-.term-wrap{border:1px solid #2f5f31;border-radius:12px;overflow:hidden;background:#0a0a10}
-.term-bar{display:flex;align-items:center;gap:8px;background:#14141c;padding:10px 14px;border-bottom:1px solid var(--line,#23232f)}
-.dot{width:12px;height:12px;border-radius:50%}
-.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
-.term-title{color:var(--mut,#9a9789);font-size:13px;margin-left:6px;flex:1}
-.term-restart{background:transparent;border:1px solid var(--line,#23232f);color:var(--gold,#ffc857);border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px}
-.term-restart:hover{border-color:var(--gold,#ffc857)}
-#terminal{height:420px;padding:8px}
-.livedemo-note2{color:var(--mut,#9a9789);font-size:12px;margin-top:10px}
-#terminal .xterm-viewport{overflow-y:auto}
-</style>
+async function openFile(path,el){
+  document.querySelectorAll('.tfile').forEach(e=>e.classList.remove('active'));el.classList.add('active');
+  document.getElementById('cbar').textContent=path;
+  const box=document.getElementById('codebox');
+  if(IMG.test(path)){box.innerHTML='<img class="preview" src="'+CODEDIR+'/'+path+'">';return;}
+  try{const r=await fetch(CODEDIR+'/'+path);const txt=await r.text();
+    box.innerHTML='<pre>'+hl(txt,path.split('.').pop())+'</pre>';
+  }catch(e){box.innerHTML='<pre>Deshtoi leximi i file-it.</pre>';}
+}
 
-<div class="wrap"><div class="codecard">
-<header><h3 id="ctitle"></h3></header>
-<div class="codebox"><pre id="ccode"></pre></div>
-<footer>
-<button class="btn view" id="copyBtn" onclick="copyCode()">📋 Copy code</button>
-<a class="btn gh" id="ghBtn" target="_blank" rel="noopener">View on GitHub ↗</a>
-</footer>
-</div></div>
-<div class="howto"><div class="box">
-<h2>▶ How to run</h2>
-<ol>
-<li>Compile: <code>g++ ORDERINGC.CPP -o ordering</code></li>
-<li>Run: <code>./ordering</code></li>
-</ol>
-</div></div>
-<footer class="page">Copyright &copy; 2026 <a href="https://github.com/ErionNezha">Erion Nezha</a>. All rights reserved.</footer>
-<script>
-const P = [{"n": 1, "file": "ORDERINGC.CPP", "title": "Food Ordering System", "desc": "Console ordering system for Erion's Fast Food \u2014 pizzas, burgers, sandwiches, rolls and biryani with sizes, quantities and a printed bill.", "cat": "Console App", "lines": 345, "code": "// ============================================================\n//  Simple Food Ordering System\n//  by Erion Nezha (c) 2026. All rights reserved.\n// ============================================================\n#include<iostream.h>\n#include<conio.h>\n//using namespace std;\nint main()\n{\n\tchar name[30], pizza1[]=\"Chicken Fazita\" ,pizza2[]=\"Chicken Bar BQ\" ,pizza3[]=\"Peri Peri\" ,pizza4[]=\"Creamy Max\", roll1[]=\"Chicken Chatni Roll\", roll2[]=\"Chicken Mayo Roll\", roll3[]=\"Veg Roll With Fries\",bur1[]=\"Zinger Burger\",bur2[]=\"Chicken Burger\",bur3[]=\"Beef Burger\";\n\tchar sand1[]=\"Club Sandwich\", sand2[]=\"Chicken Crispy Sandwich\", sand3[]=\"Extream Veg Sandwich\";\n\tchar bir1[]=\"Chicken Biryani\", bir2[]=\"Prawn Biryani\", bir3[]=\"Beef Biryani\",gotostart ;\n\tint choice=0,pchoice,pchoice1, quantity;// time=40;\n\tbeginning:\n\tsystem(\"CLS\");\n\tcout<<\"\\t\\t\\t----------Erion's Fast Food-----------\\n\\n\";\n\tcout<<\"Please Enter Your Name: \";\n\tcin.getline(name, 20);\n\tcout<<\"Hello \"<<name<<\"\\n\\nWhat would you like to order?\\n\\n\";\n\n\tcout<<\"\\t\\t\\t\\t--------Menu--------\\n\\n\";\n\n\tcout<<\"1) Pizzas\\n\";\n\tcout<<\"2) Burgers\\n\";\n\tcout<<\"3) Sandwich\\n\";\n\tcout<<\"4) Rolls\\n\";\n\tcout<<\"5) Biryani\\n\\n\";\n\tcout<<\"\\nPlease Enter your Choice: \";\n\tcin>>choice;\n\n\tif(choice==1)\n\t {\n\t\tcout<<\"\\n1) \"<<pizza1<<\"\\n\";\n\t\tcout<<\"2) \"<<pizza2<<\"\\n\";\n\t\tcout<<\"3) \"<<pizza3<<\"\\n\";\n\t\tcout<<\"4) \"<<pizza4<<\"\\n\";\n\t\tcout<<\"\\nPlease Enter which Flavour would you like to have?:\";\n\t\tcin>>pchoice;\n\t\tif(pchoice>=1 && pchoice<=5)\n\t\t{\n\t\t\tcout<<\"\\n1) Small Rs.250\\n\"<<\"2) Regular Rs.500\\n\"<<\"3) Large Rs.900\\n\";\n\t\t\tcout<<\"\\nChoose Size Please:\";\n\t\t\tcin>>pchoice1;\n\t\t\tif(pchoice1>=1 && pchoice1<=3)\n\t\t\tcout<<\"\\nPlease Enter Quantity: \";\n\t\t\tcin>>quantity;\n\t\t\tswitch(pchoice1)\n\t\t\t{\n\t\t\tcase 1: choice = 250*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 2: choice = 500*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 3: choice = 900*quantity;\n\t\t\tbreak;\n\n\n\t\t\t      }\n\t\t\tsystem(\"CLS\");\n\t\t\tswitch (pchoice1)\n\t\t\t{\n\t\t\t case 1:\n\t\t\t cout<<\"\\t\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<pizza1;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\n\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 2:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\"  \"<<pizza2;\n\t\t\t cout<<\"\\nYour Total Bill is \"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 3:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<pizza3;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 4:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<pizza4;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\n\t\t\t}\n\t\t\tcout<<\"Would you like to order anything else? Y / N:\";\n\t\t\tcin>>gotostart;\n\t\t\tif(gotostart=='Y' || gotostart=='y')\n\t\t\t{\n\t\t\t  goto beginning;\n\t\t\t  //return 0;\n\t\t\t}\n\n\n\n\t\t}\n\n\t }\n\n\n\t else if(choice==2)\n\t {\n\t\tcout<<\"\\n1 \"<<bur1<<\" Rs.180\"<<\"\\n\";\n\t\tcout<<\"2 \"<<bur2<<\" Rs.150\"<<\"\\n\";\n\t\tcout<<\"3 \"<<bur3<<\" Rs.160\"<<\"\\n\";\n\t\t//cout<<\"4 \"<<pizza4<<\"\\n\";\n\t\tcout<<\"\\nPlease Enter which Burger you would like to have?: \";\n\t\tcin>>pchoice1;\n\t\tif(pchoice1>=1 && pchoice1<=3)\n\t\t{\n\t\t\tcout<<\"\\nPlease Enter Quantity: \";\n\t\t\tcin>>quantity;\n\t\t\tswitch(pchoice1)\n\t\t\t{\n\t\t\tcase 1: choice = 180*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 2: choice = 150*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 3: choice = 160*quantity;\n\t\t\tbreak;\n\n\t\t\t}\n\t\t\tsystem(\"CLS\");\n\t\t\tswitch (pchoice1)\n\t\t\t{\n\t\t\t case 1:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<bur1;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food \\n\";\n\t\t\t break;\n\t\t\t case 2:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\"  \"<<bur2;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Pizza\\n\";\n\t\t\t break;\n\t\t\t case 3:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<bur3;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\n\n\t\t\t}\n\t\t\tcout<<\"\\nWould you like to order anything else? Y / N:\";\n\t\t\tcin>>gotostart;\n\t\t\tif(gotostart=='Y' || gotostart=='y')\n\t\t\t{\n\t\t\t  goto beginning;\n\t\t\t  //return 0;\n\t\t\t}\n\n }\n}\n\telse if(choice==3)\n\t {\n\t\tcout<<\"\\n1  \"<<sand1<<\" Rs.240\"<<\"\\n\";\n\t\tcout<<\"2  \"<<sand2<<\" Rs.160\"<<\"\\n\";\n\t\tcout<<\"3  \"<<sand3<<\" Rs.100\"<<\"\\n\";\n\t\t//cout<<\"4 \"<<pizza4<<\"\\n\";\n\t\tcout<<\"\\nPlease Enter which Sandwich you would like to have?:\";\n\t\tcin>>pchoice1;\n\t\tif(pchoice1>=1 && pchoice1<=3)\n\t\t{\n\t\t\tcout<<\"\\nPlease Enter Quantity: \";\n\t\t\tcin>>quantity;\n\t\t\tswitch(pchoice1)\n\t\t\t{\n\t\t\tcase 1: choice = 240*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 2: choice = 160*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 3: choice = 100*quantity;\n\t\t\tbreak;\n\n\t\t\t}\n\t\t\tsystem(\"CLS\");\n\t\t\tswitch (pchoice1)\n\t\t\t{\n\t\t\t case 1:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<sand1;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 2:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\"  \"<<sand2;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 3:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<sand2;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\n\n\t\t\t}\n\t\t\tcout<<\"Would you like to order anything else? Y / N:\";\n\t\t\tcin>>gotostart;\n\t\t\tif(gotostart=='Y' || gotostart=='y')\n\t\t\t{\n\t\t\t  goto beginning;\n\t\t\t  //return 0;\n\t\t\t}\n\t\t\t}\n\t\t\t}\n\n\n\t else if(choice==4)\n\t {\n\t\tcout<<\"\\n1 \"<<roll1<<\" Rs.150\"<<\"\\n\";\n\t\tcout<<\"2 \"<<roll2<<\" Rs.100\"<<\"\\n\";\n\t\tcout<<\"3 \"<<roll3<<\" Rs.120\"<<\"\\n\";\n\t\t//cout<<\"4 \"<<pizza4<<\"\\n\";\n\t\tcout<<\"\\nPlease Enter which you would like to have?: \";\n\t\tcin>>pchoice1;\n\t\tif(pchoice1>=1 && pchoice1<=3)\n\t\t{\n\t\t\tcout<<\"\\nHow Much Rolls Do you want: \";\n\t\t\tcin>>quantity;\n\t\t\tswitch(pchoice1)\n\t\t\t{\n\t\t\tcase 1: choice = 150*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 2: choice = 100*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 3: choice = 120*quantity;\n\t\t\tbreak;\n\n\t\t\t}\n\t\t\tsystem(\"CLS\");\n\t\t\tswitch (pchoice1)\n\t\t\t{\n\t\t\t case 1:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<roll1;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 2:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\"  \"<<roll2;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 3:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<roll3;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\n\n\t\t\t}\n\n }\n}\n\telse if(choice==5)\n\t {\n\t\tcout<<\"\\n1 \"<<bir1<<\" Rs.160\"<<\"\\n\";\n\t\tcout<<\"2 \"<<bir2<<\" Rs.220\"<<\"\\n\";\n\t\tcout<<\"3 \"<<bir3<<\" Rs.140\"<<\"\\n\";\n\t\t//cout<<\"4 \"<<pizza4<<\"\\n\";\n\t\tcout<<\"\\nPlease Enter which Biryani you would like to have?:\";\n\t\tcin>>pchoice1;\n\t\tif(pchoice1>=1 && pchoice1<=3)\n\t\t{\n\t\t\tcout<<\"\\nPlease Enter Quantity: \";\n\t\t\tcin>>quantity;\n\t\t\tswitch(pchoice1)\n\t\t\t{\n\t\t\tcase 1: choice = 160*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 2: choice = 220*quantity;\n\t\t\tbreak;\n\n\t\t\tcase 3: choice = 140*quantity;\n\t\t\tbreak;\n\n\t\t\t}\n\t\t\tsystem(\"CLS\");\n\t\t\tswitch (pchoice1)\n\t\t\t{\n\t\t\t case 1:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<bir1;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food \\n\";\n\t\t\t break;\n\t\t\t case 2:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\"  \"<<bir2;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\t\t\t case 3:\n\t\t\t cout<<\"\\t\\t--------Your Order---------\\n\";\n\t\t\t cout<<\"\"<<quantity<<\" \"<<bir3;\n\t\t\t cout<<\"\\nYour Total Bill is\"<<choice<<\"\\nYour Order Will be delivered in 40 Minutes\";\n\t\t\t cout<<\"\\nThank you For Ordering From Erion's Fast Food\\n\";\n\t\t\t break;\n\n\n\t\t\t}\n\t\t\tcout<<\"Would you like to order anything else? Y / N:\";\n\t\t\tcin>>gotostart;\n\t\t\tif(gotostart=='Y' || gotostart=='y')\n\t\t\t{\n\t\t\t  goto beginning;\n\t\t\t  //return 0;\n\t\t\t}\n\t\t\t}\n\t\t\t}\n\n\t\t\telse\n\t\t\t{\n\t\t\t\tsystem(\"CLS\");\n\t\t\t\tcout<<\"Please Select Right Option: \\n\";\n\t\t\t\tcout<<\"Would You like to Start the program again? Y / N: \" ;\n\t\t\t\tcin>>gotostart;\n\n\t\t\t\tif(gotostart=='Y' || gotostart=='y')\n\t\t\t\t{\n\t\t\t\t  goto beginning;\n\t\t\t  //return 0;\n\t\t\t}\n\t\t\t}\n\n     getch();\n}\n", "blob": "https://github.com/ErionNezha/Simple-Food-Ordering/blob/main/ORDERINGC.CPP"}];
-const p = P[0];
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function hl(code){
-  var re = new RegExp('("[^"\n]*")|(//[^\n]*)|\\b(include|using|namespace|int|char|float|double|void|bool|return|if|else|for|while|do|switch|case|default|break|continue|goto|class|struct|public|private|new|delete|cout|cin|endl|std|string)\\b|\\b(\\d+)\\b', 'g');
-  return esc(code).split('\n').map(function(line){
-    var out='', last=0, m; re.lastIndex=0;
-    while((m = re.exec(line))){
-      out += line.slice(last, m.index);
-      var tok = m[0];
-      if(m[1]) out += '<span class="s">'+tok+'</span>';
-      else if(m[2]) out += '<span class="c">'+tok+'</span>';
-      else if(m[3]) out += '<span class="k">'+tok+'</span>';
-      else if(m[4]) out += '<span class="n">'+tok+'</span>';
-      last = m.index + tok.length;
-      if(tok.length === 0) re.lastIndex++;
-    }
-    out += line.slice(last);
-    return '<span class="row">'+(out||' ')+'</span>';
-  }).join('');
+function hl(code,lang){
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const tok=/(\/\/[^\n]*|\/\*[\s\S]*?\*\/|#[^\n]*|<!--[\s\S]*?-->)|("[^"\n]*"|'[^'\n]*')|\b(import|from|as|def|return|if|elif|else|for|while|in|not|and|or|class|try|except|finally|with|lambda|pass|break|continue|print|public|private|protected|static|void|int|float|double|char|long|short|boolean|new|this|null|true|false|extends|implements|package|throws|struct|include|switch|case|default|do|sizeof|typedef|const|unsigned|using|namespace|cin|cout|endl|int main|string|System|out|println|var|let|function|=>)\b|\b(\d+(\.\d+)?)\b/g;
+  let out='',last=0,m;
+  while((m=tok.exec(code))!==null){
+    out+=esc(code.slice(last,m.index));
+    const cls=m[1]?'cm':m[2]?'st':m[3]?'kw':'nm';
+    out+='<span class="'+cls+'">'+esc(m[0])+'</span>';
+    last=m.index+m[0].length;
+  }
+  out+=esc(code.slice(last));
+  return out.split('\n').map((l,i)=>'<span class="lineno">'+(i+1)+'</span>'+(l||' ')).join('\n');
 }
-document.getElementById('ctitle').innerHTML = esc(p.title)+' <small>'+esc(p.file)+' · '+p.lines+' lines</small>';
-document.getElementById('ccode').innerHTML = hl(p.code);
-document.getElementById('ghBtn').href = p.blob;
-function copyCode(){navigator.clipboard.writeText(p.code).then(function(){var b=document.getElementById('copyBtn');b.textContent='✅ Copied!';setTimeout(function(){b.textContent='📋 Copy code';},1500);});}
+
+buildTree();
 </script>
 </body>
 </html>
